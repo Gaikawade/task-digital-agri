@@ -2,7 +2,7 @@ require("dotenv").config();
 require("express-async-errors");
 const express = require("express");
 const mongoose = require("mongoose");
-const { errorHandler } = require("./Middleware/errorHandler");
+const { errorHandler } = require("./Utils/errorHandler");
 const router = require('./Routers/router')
 
 const app = express();

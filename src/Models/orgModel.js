@@ -1,17 +1,31 @@
 const mongoose = require("mongoose");
-const ObjectId = mongoose.Schema.Types.ObjectId
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const orgSchema = mongoose.Schema(
     {
         adminId: {
-          type: ObjectId,
-          required: true,
-          ref: "Admin"
+            type: ObjectId,
+            required: true,
+            ref: "Admin",
         },
         name: {
             type: String,
             required: true,
-            unique: true
+            unique: true,
+        },
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+        },
+        phone: {
+            type: Number,
+            required: true,
+            unique: true,
+        },
+        headQuarters: {
+            type: String,
+            required: true,
         },
         address: {
             street: {
@@ -27,19 +41,9 @@ const orgSchema = mongoose.Schema(
                 required: true,
             },
         },
-        headQuarters: {
-            type: String,
+        cropSeason: {
+            type: [String],
             required: true,
-        },
-        email: {
-            type: String,
-            required: true,
-            unique: true,
-        },
-        phone: {
-            type: Number,
-            required: true,
-            unique: true,
         },
     },
     { timestamps: true }

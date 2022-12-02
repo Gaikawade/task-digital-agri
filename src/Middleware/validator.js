@@ -69,7 +69,6 @@ exports.createOrgValidator = [
         .not()
         .isEmpty()
         .withMessage("Head Quarters is missing"),
-    // check("address").trim().not().isEmpty().withMessage("Address is missing"),
     check("address.street")
         .trim()
         .not()
@@ -87,6 +86,50 @@ exports.createOrgValidator = [
         .withMessage("Pincode is missing")
         .matches(/^\d{6}$/g)
         .withMessage("Pincode must be a 6 digit number"),
+    check("cropSeason")
+        .trim()
+        .not()
+        .isEmpty()
+        .withMessage("Crop season is missing")
+];
+
+exports.updateOrgValidator = [
+    check("name").trim().isEmpty().withMessage("Name is missing"),
+    check("email")
+        .trim()
+        .isEmpty()
+        .withMessage("Email is missing")
+        .normalizeEmail()
+        .isEmail()
+        .withMessage("Email is invalid"),
+    check("phone")
+        .trim()
+        .isEmpty()
+        .withMessage("Phone is missing")
+        .matches(/^(\+91)?0?[6-9]\d{9}$/g)
+        .withMessage("Phone number must contain 10 digits only"),
+    check("headQuarters")
+        .trim()
+        .isEmpty()
+        .withMessage("Head Quarters is missing"),
+    check("address.street")
+        .trim()
+        .isEmpty()
+        .withMessage("Street is missing"),
+    check("address.landmark")
+        .trim()
+        .isEmpty()
+        .withMessage("Landmark is missing"),
+    check("address.pincode")
+        .trim()
+        .isEmpty()
+        .withMessage("Pincode is missing")
+        .matches(/^\d{6}$/g)
+        .withMessage("Pincode must be a 6 digit number"),
+    check("cropSeason")
+        .trim()
+        .isEmpty()
+        .withMessage("Crop season is missing")
 ];
 
 exports.validate = (req, res, next) => {
